@@ -13,6 +13,7 @@ Technologies Used:
  Expressions
  while Loops
  Methods
+ Casting Data Types
  
 
 ### Project Operation
