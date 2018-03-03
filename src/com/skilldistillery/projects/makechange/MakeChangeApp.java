@@ -30,6 +30,7 @@ public class MakeChangeApp {
 
 		}
 
+		System.out.println();
 		System.out.println("Have a nice day!");
 		keyboard.close();
 	}
@@ -40,43 +41,111 @@ public class MakeChangeApp {
 		numericalChange(startingChange);
 		System.out.println();
 
-		System.out.print("Or, if you prefer, your change is " + twentyDivision(startingChange) + " twenty dollar bills, ");
-		startingChange = startingChange - (2000 * twentyDivision(startingChange));
+		System.out.print("Or, if you prefer, your change is:");
 
-		System.out.print(tenDivision(startingChange) + " ten dollar bills, ");
-		startingChange = startingChange - (1000 * tenDivision(startingChange));
+		if (twentyDivision(startingChange) != 0) {
+			if (twentyDivision(startingChange) != 1) {
+				System.out.println("\t" + twentyDivision(startingChange) + " twenty dollar bills");
+			}
+			else {
+				System.out.println("\t" + twentyDivision(startingChange) + " twenty dollar bill");
+			}
+			
+			startingChange = startingChange - (2000 * twentyDivision(startingChange));
+		}
 
-		System.out.print(fiveDivision(startingChange) + " five dollar bills, ");
-		startingChange = startingChange - (500 * fiveDivision(startingChange));
+		if (tenDivision(startingChange) != 0) {
+			if (tenDivision(startingChange) != 1) {
+				System.out.print("\t" + tenDivision(startingChange) + " ten dollar bills");
+			}
+			else {
+				System.out.print("\t" + tenDivision(startingChange) + " ten dollar bill");
+			}
+			
+			startingChange = startingChange - (1000 * tenDivision(startingChange));
+		}
 
-		System.out.print(oneDivision(startingChange) + " one dollar bills, ");
-		startingChange = startingChange - (100 * oneDivision(startingChange));
+		if (fiveDivision(startingChange) != 0) {
+			if (fiveDivision(startingChange) != 1) {
+				System.out.print("\t" + fiveDivision(startingChange) + " five dollar bills");
+			}
+			else {
+				System.out.print("\t" + fiveDivision(startingChange) + " five dollar bill");
+			}
+			
+			startingChange = startingChange - (500 * fiveDivision(startingChange));
+		}
 
-		System.out.print(quarterDivision(startingChange) + " quarters, ");
-		startingChange = startingChange - (25 * quarterDivision(startingChange));
+		if (oneDivision(startingChange) != 0) {
+			if (oneDivision(startingChange) != 1) {
+				System.out.print("\t" + oneDivision(startingChange) + " one dollar bills");
+			}
+			else {
+				System.out.print("\t" + oneDivision(startingChange) + " one dollar bill");
+			}
+			
+			startingChange = startingChange - (100 * oneDivision(startingChange));
+		}
 
-		System.out.print(dimeDivision(startingChange) + " dimes, ");
-		startingChange = startingChange - (10 * dimeDivision(startingChange));
+		if (quarterDivision(startingChange) != 0) {
+			if (quarterDivision(startingChange) != 1) {
+				System.out.print("\t" + quarterDivision(startingChange) + " quarters");
+			}
+			else {
+				System.out.print("\t" + quarterDivision(startingChange) + " quarter");
+			}
+			
+			startingChange = startingChange - (25 * quarterDivision(startingChange));
+		}
 
-		System.out.print(nickelDivision(startingChange) + " nickels, and ");
-		startingChange = startingChange - (5 * nickelDivision(startingChange));
+		if (dimeDivision(startingChange) != 0) {
+			if (dimeDivision(startingChange) != 1) {
+				System.out.print("\t" + dimeDivision(startingChange) + " dimes");
+			}
+			else {
+				System.out.print("\t" + dimeDivision(startingChange) + " dime");
+			}
+			
+			startingChange = startingChange - (10 * dimeDivision(startingChange));
+		}
 
-		System.out.println(pennyDivision(startingChange) + " pennies.");
-		startingChange = startingChange - (1 * pennyDivision(startingChange));
+		if (nickelDivision(startingChange) != 0) {
+			if (nickelDivision(startingChange) != 1) {
+				System.out.print("\t" + nickelDivision(startingChange) + " nickels");
+			}
+			else {
+				System.out.print("\t" + nickelDivision(startingChange) + " nickel");
+			}
+			
+			startingChange = startingChange - (5 * nickelDivision(startingChange));
+		}
+
+		if (pennyDivision(startingChange) != 0) {
+			if (pennyDivision(startingChange) != 1) {
+				System.out.print("\t" + pennyDivision(startingChange) + " pennies");
+			}
+			else {
+				System.out.print("\t" + tenDivision(startingChange) + " penny");
+			}
+			
+			startingChange = startingChange - (1 * pennyDivision(startingChange));
+			
+			System.out.println(startingChange);
+		}
 
 	}
 
 	private static void numericalChange(int startingChange) {
 		System.out.println();
 		System.out.print("Your change today is $" + (startingChange / 100));
-		
+
 		if ((startingChange % 100) >= 10) {
 			System.out.print("." + (startingChange % 100) + ".");
 		}
 		else {
 			System.out.print(".0" + (startingChange % 100) + ".");
 		}
-		
+
 	}
 
 	private static int twentyDivision(int startingChange) {
