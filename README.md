@@ -32,5 +32,3 @@ Technologies Used:
  - Doubles sometimes have difficulty with certain numbers which it might interpret as repeating decimal numbers. These numbers tend to be derived from fractions that form odd decimaled numbers such as 1/3 or 2/3 (0.3333333334 and 0.6666666667 respectively)
  
  - Dividing the workload of your class into different methods makes your code look cleaner and more efficient.
- 
- - 
