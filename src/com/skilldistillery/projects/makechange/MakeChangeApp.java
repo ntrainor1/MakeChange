@@ -61,7 +61,7 @@ public class MakeChangeApp {
 		System.out.print(nickelDivision(startingChange) + " nickels, and ");
 		startingChange = startingChange - (5 * nickelDivision(startingChange));
 
-		System.out.println(pennyDivision(startingChange + 1) + " pennies.");
+		System.out.println(pennyDivision(startingChange) + " pennies.");
 		startingChange = startingChange - (1 * pennyDivision(startingChange));
 
 	}
@@ -71,10 +71,10 @@ public class MakeChangeApp {
 		System.out.print("Your change today is $" + (startingChange / 100));
 		
 		if ((startingChange % 100) >= 10) {
-			System.out.print("." + ((startingChange % 100) + 1) + ".");
+			System.out.print("." + (startingChange % 100) + ".");
 		}
 		else {
-			System.out.print(".0" + ((startingChange % 100) + 1) + ".");
+			System.out.print(".0" + (startingChange % 100) + ".");
 		}
 		
 	}
