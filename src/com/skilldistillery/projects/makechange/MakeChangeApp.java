@@ -12,7 +12,9 @@ public class MakeChangeApp {
 		double price = keyboard.nextDouble();
 		
 		System.out.print("I see. Give me some payment: (in dollars, e.g. 2.75) ");
+		double payment = keyboard.nextDouble();
 		
+		keyboard.close();
 	}
 
 }
