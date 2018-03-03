@@ -43,81 +43,81 @@ public class MakeChangeApp {
 
 		System.out.println("Or, if you prefer, your change is:");
 
-		if (twentyDivision(startingChange) != 0) {
-			if (twentyDivision(startingChange) != 1) {
-				System.out.println("\t" + twentyDivision(startingChange) + " twenty dollar bills");
+		if (denominationDivision(startingChange, 2000) != 0) {
+			if (denominationDivision(startingChange, 2000) != 1) {
+				System.out.println("\t" + denominationDivision(startingChange, 2000) + " twenty dollar bills");
 			}
 			else {
-				System.out.println("\t" + twentyDivision(startingChange) + " twenty dollar bill");
+				System.out.println("\t" + denominationDivision(startingChange, 2000) + " twenty dollar bill");
 			}
 
-			startingChange = startingChange - (2000 * twentyDivision(startingChange));
+			startingChange = startingChange - (2000 * denominationDivision(startingChange, 2000));
 		}
 
-		if (tenDivision(startingChange) != 0) {
-			if (tenDivision(startingChange) != 1) {
-				System.out.println("\t" + tenDivision(startingChange) + " ten dollar bills");
+		if (denominationDivision(startingChange, 1000) != 0) {
+			if (denominationDivision(startingChange, 1000) != 1) {
+				System.out.println("\t" + denominationDivision(startingChange, 1000) + " ten dollar bills");
 			}
 			else {
-				System.out.println("\t" + tenDivision(startingChange) + " ten dollar bill");
+				System.out.println("\t" + denominationDivision(startingChange, 1000) + " ten dollar bill");
 			}
 
-			startingChange = startingChange - (1000 * tenDivision(startingChange));
+			startingChange = startingChange - (1000 * denominationDivision(startingChange, 1000));
 		}
 
-		if (fiveDivision(startingChange) != 0) {
-			if (fiveDivision(startingChange) != 1) {
-				System.out.println("\t" + fiveDivision(startingChange) + " five dollar bills");
+		if (denominationDivision(startingChange, 500) != 0) {
+			if (denominationDivision(startingChange, 500) != 1) {
+				System.out.println("\t" + denominationDivision(startingChange, 500) + " five dollar bills");
 			}
 			else {
-				System.out.println("\t" + fiveDivision(startingChange) + " five dollar bill");
+				System.out.println("\t" + denominationDivision(startingChange, 500) + " five dollar bill");
 			}
 
-			startingChange = startingChange - (500 * fiveDivision(startingChange));
+			startingChange = startingChange - (500 * denominationDivision(startingChange, 500));
 		}
 
-		if (oneDivision(startingChange) != 0) {
-			if (oneDivision(startingChange) != 1) {
-				System.out.println("\t" + oneDivision(startingChange) + " one dollar bills");
+		if (denominationDivision(startingChange, 100) != 0) {
+			if (denominationDivision(startingChange, 100) != 1) {
+				System.out.println("\t" + denominationDivision(startingChange, 100) + " one dollar bills");
 			}
 			else {
-				System.out.println("\t" + oneDivision(startingChange) + " one dollar bill");
+				System.out.println("\t" + denominationDivision(startingChange, 100) + " one dollar bill");
 			}
 
-			startingChange = startingChange - (100 * oneDivision(startingChange));
+			startingChange = startingChange - (100 * denominationDivision(startingChange, 100));
 		}
 
-		if (quarterDivision(startingChange) != 0) {
-			if (quarterDivision(startingChange) != 1) {
-				System.out.println("\t" + quarterDivision(startingChange) + " quarters");
+		if (denominationDivision(startingChange, 25) != 0) {
+			if (denominationDivision(startingChange, 25) != 1) {
+				System.out.println("\t" + denominationDivision(startingChange, 25) + " quarters");
 			}
 			else {
-				System.out.println("\t" + quarterDivision(startingChange) + " quarter");
+				System.out.println("\t" + denominationDivision(startingChange, 25) + " quarter");
 			}
 
-			startingChange = startingChange - (25 * quarterDivision(startingChange));
+			startingChange = startingChange - (25 * denominationDivision(startingChange, 25));
 		}
 
-		if (dimeDivision(startingChange) != 0) {
-			if (dimeDivision(startingChange) != 1) {
-				System.out.println("\t" + dimeDivision(startingChange) + " dimes");
+		if (denominationDivision(startingChange, 10) != 0) {
+			if (denominationDivision(startingChange, 10) != 1) {
+				System.out.println("\t" + denominationDivision(startingChange, 10) + " dimes");
 			}
 			else {
-				System.out.println("\t" + dimeDivision(startingChange) + " dime");
+				System.out.println("\t" + denominationDivision(startingChange, 10) + " dime");
 			}
 
-			startingChange = startingChange - (10 * dimeDivision(startingChange));
+			startingChange = startingChange - (10 * denominationDivision(startingChange, 10));
 		}
 
-		if (nickelDivision(startingChange) != 0) {
-			if (nickelDivision(startingChange) != 1) {
-				System.out.println("\t" + nickelDivision(startingChange) + " nickels");
+		if (denominationDivision(startingChange, 5) != 0) {
+			if (denominationDivision(startingChange, 5) != 1) {
+				System.out.println("\t" + denominationDivision(startingChange, 5) + " nickels");
 			}
 			else {
-				System.out.println("\t" + nickelDivision(startingChange) + " nickel");
+				System.out.println("\t" + denominationDivision(startingChange, 5) + " nickel");
 			}
 
-			startingChange = startingChange - (5 * nickelDivision(startingChange));
+			startingChange = startingChange - (5 * denominationDivision(startingChange, 5));
 		}
 
 		if (startingChange != 0) {
@@ -159,70 +159,10 @@ public class MakeChangeApp {
 
 	}
 
-	private static int twentyDivision(int startingChange) {
-		int twentyBills = startingChange / 2000;
-		if (twentyBills >= 1) {
-			return twentyBills;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	private static int tenDivision(int startingChange) {
-		int tenBills = startingChange / 1000;
-		if (tenBills >= 1) {
-			return tenBills;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	private static int fiveDivision(int startingChange) {
-		int fiveBills = startingChange / 500;
-		if (fiveBills >= 1) {
-			return fiveBills;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	private static int oneDivision(int startingChange) {
-		int oneBills = startingChange / 100;
-		if (oneBills >= 1) {
-			return oneBills;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	private static int quarterDivision(int startingChange) {
-		int quarters = startingChange / 25;
-		if (quarters >= 1) {
-			return quarters;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	private static int dimeDivision(int startingChange) {
-		int dimes = startingChange / 10;
-		if (dimes >= 1) {
-			return dimes;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	private static int nickelDivision(int startingChange) {
-		int nickels = startingChange / 5;
-		if (nickels >= 1) {
-			return nickels;
+	private static int denominationDivision(int startingChange, int increment) {
+		int denomination = startingChange / increment;
+		if (denomination >= 1) {
+			return denomination;
 		}
 		else {
 			return 0;
