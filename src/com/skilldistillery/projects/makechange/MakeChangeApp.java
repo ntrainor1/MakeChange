@@ -24,7 +24,7 @@ public class MakeChangeApp {
 				insufficientPayment();
 			}
 			else {
-				giveChange(payment);
+				giveChange(payment, price);
 				break;
 			}
 
@@ -34,8 +34,13 @@ public class MakeChangeApp {
 		keyboard.close();
 	}
 
-	private static void giveChange(double payment) {
+	private static void giveChange(double payment, double price) {
+		double startingChange = payment - price;
+		int twentyBill = 0, tenBill = 0, fiveBill = 0, oneBill = 0, quarter = 0, dime = 0, nickel = 0, penny = 0;
 
+		System.out.println((int)(startingChange*100));
+
+		System.out.println("Your change is " + twentyBill + " twenty dollar bills, " + tenBill + " ten dollar bills, " + fiveBill + " five dollar bills, " + oneBill + " one dollar bills, " + quarter + " quarters, " + dime + " dimes, " + nickel + " nickels, " + penny + " and pennies.");
 	}
 
 	private static void insufficientPayment() {
