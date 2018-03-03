@@ -20,10 +20,11 @@ public class MakeChangeApp {
 				thankYou();
 				break;
 			}
-			else if (payment <= price) {
+			else if (payment < price) {
 				insufficientPayment();
 			}
 			else {
+				giveChange(payment);
 				break;
 			}
 
@@ -31,6 +32,10 @@ public class MakeChangeApp {
 
 		System.out.println("Have a nice day!");
 		keyboard.close();
+	}
+
+	private static void giveChange(double payment) {
+
 	}
 
 	private static void insufficientPayment() {
