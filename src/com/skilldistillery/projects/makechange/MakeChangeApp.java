@@ -36,12 +36,12 @@ public class MakeChangeApp {
 	}
 
 	private static void giveChange(double payment, double price) {
-		int startingChange = (int) ((payment - price) * 100);
+		int startingChange = roundRepeatingDecimals(payment, price);
 
 		numericalChange(startingChange);
 		System.out.println();
 
-		System.out.print("Or, if you prefer, your change is:");
+		System.out.println("Or, if you prefer, your change is:");
 
 		if (twentyDivision(startingChange) != 0) {
 			if (twentyDivision(startingChange) != 1) {
@@ -50,94 +50,105 @@ public class MakeChangeApp {
 			else {
 				System.out.println("\t" + twentyDivision(startingChange) + " twenty dollar bill");
 			}
-			
+
 			startingChange = startingChange - (2000 * twentyDivision(startingChange));
 		}
 
 		if (tenDivision(startingChange) != 0) {
 			if (tenDivision(startingChange) != 1) {
-				System.out.print("\t" + tenDivision(startingChange) + " ten dollar bills");
+				System.out.println("\t" + tenDivision(startingChange) + " ten dollar bills");
 			}
 			else {
-				System.out.print("\t" + tenDivision(startingChange) + " ten dollar bill");
+				System.out.println("\t" + tenDivision(startingChange) + " ten dollar bill");
 			}
-			
+
 			startingChange = startingChange - (1000 * tenDivision(startingChange));
 		}
 
 		if (fiveDivision(startingChange) != 0) {
 			if (fiveDivision(startingChange) != 1) {
-				System.out.print("\t" + fiveDivision(startingChange) + " five dollar bills");
+				System.out.println("\t" + fiveDivision(startingChange) + " five dollar bills");
 			}
 			else {
-				System.out.print("\t" + fiveDivision(startingChange) + " five dollar bill");
+				System.out.println("\t" + fiveDivision(startingChange) + " five dollar bill");
 			}
-			
+
 			startingChange = startingChange - (500 * fiveDivision(startingChange));
 		}
 
 		if (oneDivision(startingChange) != 0) {
 			if (oneDivision(startingChange) != 1) {
-				System.out.print("\t" + oneDivision(startingChange) + " one dollar bills");
+				System.out.println("\t" + oneDivision(startingChange) + " one dollar bills");
 			}
 			else {
-				System.out.print("\t" + oneDivision(startingChange) + " one dollar bill");
+				System.out.println("\t" + oneDivision(startingChange) + " one dollar bill");
 			}
-			
+
 			startingChange = startingChange - (100 * oneDivision(startingChange));
 		}
 
 		if (quarterDivision(startingChange) != 0) {
 			if (quarterDivision(startingChange) != 1) {
-				System.out.print("\t" + quarterDivision(startingChange) + " quarters");
+				System.out.println("\t" + quarterDivision(startingChange) + " quarters");
 			}
 			else {
-				System.out.print("\t" + quarterDivision(startingChange) + " quarter");
+				System.out.println("\t" + quarterDivision(startingChange) + " quarter");
 			}
-			
+
 			startingChange = startingChange - (25 * quarterDivision(startingChange));
 		}
 
 		if (dimeDivision(startingChange) != 0) {
 			if (dimeDivision(startingChange) != 1) {
-				System.out.print("\t" + dimeDivision(startingChange) + " dimes");
+				System.out.println("\t" + dimeDivision(startingChange) + " dimes");
 			}
 			else {
-				System.out.print("\t" + dimeDivision(startingChange) + " dime");
+				System.out.println("\t" + dimeDivision(startingChange) + " dime");
 			}
-			
+
 			startingChange = startingChange - (10 * dimeDivision(startingChange));
 		}
 
 		if (nickelDivision(startingChange) != 0) {
 			if (nickelDivision(startingChange) != 1) {
-				System.out.print("\t" + nickelDivision(startingChange) + " nickels");
+				System.out.println("\t" + nickelDivision(startingChange) + " nickels");
 			}
 			else {
-				System.out.print("\t" + nickelDivision(startingChange) + " nickel");
+				System.out.println("\t" + nickelDivision(startingChange) + " nickel");
 			}
-			
+
 			startingChange = startingChange - (5 * nickelDivision(startingChange));
 		}
 
-		if (pennyDivision(startingChange) != 0) {
-			if (pennyDivision(startingChange) != 1) {
-				System.out.print("\t" + pennyDivision(startingChange) + " pennies");
+		if (startingChange != 0) {
+			if (startingChange != 1) {
+				System.out.println("\t" + startingChange + " pennies");
 			}
 			else {
-				System.out.print("\t" + tenDivision(startingChange) + " penny");
+				System.out.println("\t" + startingChange + " penny");
 			}
-			
-			startingChange = startingChange - (1 * pennyDivision(startingChange));
-			
-			System.out.println(startingChange);
+
 		}
 
 	}
 
+	private static int roundRepeatingDecimals(double payment, double price) {
+		double combinedTotal = ((payment - price) * 100);
+		int roundedDecimals = 0;
+
+		if ((combinedTotal - (int) combinedTotal) >= 0.5) {
+			roundedDecimals = (int) combinedTotal + 1;
+		}
+		else {
+			roundedDecimals = (int) combinedTotal;
+		}
+
+		return roundedDecimals;
+	}
+
 	private static void numericalChange(int startingChange) {
 		System.out.println();
-		System.out.print("Your change today is $" + (startingChange / 100));
+		System.out.print("Thank you! Your change today is $" + (startingChange / 100));
 
 		if ((startingChange % 100) >= 10) {
 			System.out.print("." + (startingChange % 100) + ".");
@@ -212,16 +223,6 @@ public class MakeChangeApp {
 		int nickels = startingChange / 5;
 		if (nickels >= 1) {
 			return nickels;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	private static int pennyDivision(int startingChange) {
-		int pennies = startingChange / 1;
-		if (pennies >= 1) {
-			return pennies;
 		}
 		else {
 			return 0;
