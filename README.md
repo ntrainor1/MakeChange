@@ -9,11 +9,11 @@ Program to save change.
 This program is designed to take in customer payment and evaluate it against the cost of the customer's product. Comments throughout to guide programmer through program progress in addition to README.md.
 
 Technologies Used:
- Screen Output and Keyboard Input
- Expressions
- while Loops
- Methods
- Casting Data Types
+ - Screen Output and Keyboard Input
+ - Expressions
+ - while Loops
+ - Methods
+ - Casting Data Types
  
 
 ### Project Operation
