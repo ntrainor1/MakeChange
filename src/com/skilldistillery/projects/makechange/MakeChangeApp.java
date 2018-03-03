@@ -38,8 +38,9 @@ public class MakeChangeApp {
 		int startingChange = (int) ((payment - price) * 100);
 
 		numericalChange(startingChange);
+		System.out.println();
 
-		System.out.print("or, if you prefer, your change is " + twentyDivision(startingChange) + " twenty dollar bills, ");
+		System.out.print("Or, if you prefer, your change is " + twentyDivision(startingChange) + " twenty dollar bills, ");
 		startingChange = startingChange - (2000 * twentyDivision(startingChange));
 
 		System.out.print(tenDivision(startingChange) + " ten dollar bills, ");
@@ -60,15 +61,22 @@ public class MakeChangeApp {
 		System.out.print(nickelDivision(startingChange) + " nickels, and ");
 		startingChange = startingChange - (5 * nickelDivision(startingChange));
 
-		System.out.println(pennyDivision(startingChange) + " pennies.");
+		System.out.println(pennyDivision(startingChange + 1) + " pennies.");
 		startingChange = startingChange - (1 * pennyDivision(startingChange));
 
 	}
 
 	private static void numericalChange(int startingChange) {
 		System.out.println();
-		System.out.print("Your change today is " + (startingChange / 100) + " dollars and " + (startingChange % 100)
-				+ " cents ");
+		System.out.print("Your change today is $" + (startingChange / 100));
+		
+		if ((startingChange % 100) >= 10) {
+			System.out.print("." + ((startingChange % 100) + 1) + ".");
+		}
+		else {
+			System.out.print(".0" + ((startingChange % 100) + 1) + ".");
+		}
+		
 	}
 
 	private static int twentyDivision(int startingChange) {
