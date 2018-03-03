@@ -7,12 +7,19 @@ public class MakeChangeApp {
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner(System.in);
 
+		// The program begins by prompting the customer for the cost of their product.
 		System.out.println("Hello there, stranger.");
 		System.out.print("What is the cost of your product? (in dollars, e.g. 1.20) ");
 		double price = keyboard.nextDouble();
 
+		// The program then prompts the customer for payment.
 		System.out.print("I see. Give me some payment: (in dollars, e.g. 2.75) ");
 
+		/*
+		 * The program then runs in an infinite loop in asking for payment. If the cost
+		 * of payment is met, the loop is broken. Otherwise, it will keep prompting the
+		 * user until the price is met.
+		 */
 		while (true) {
 			double payment = keyboard.nextDouble();
 
@@ -30,17 +37,48 @@ public class MakeChangeApp {
 
 		}
 
+		// Once the customer has paid, the program says goodbye, closes its Scanner, and
+		// terminates the program.
 		System.out.println();
 		System.out.println("Have a nice day!");
 		keyboard.close();
 	}
 
+	// This giveChange() method first evaluates the raw change when judged against
+	// the payment and the price.
 	private static void giveChange(double payment, double price) {
+		/*
+		 * First, the program needs to deduct the price from the payment in the
+		 * roundRepeatingDecimals() method.
+		 * 
+		 * Then, it needs to convert the change into an int for the sake of simplicity.
+		 */
+
 		int startingChange = roundRepeatingDecimals(payment, price);
 
+		/*
+		 * The numericalChange() method then outputs the change in dollar format (e.g.
+		 * $14.50), in case the customer might prefer to see their change in numerical
+		 * format.
+		 */
 		numericalChange(startingChange);
 		System.out.println();
 
+		/*
+		 * The denominationDivision() method then outputs the change in denomination
+		 * format (e.g. one ten dollar bill four one dollar bills two quarters).
+		 * 
+		 * The program then prints out the results in the above format, however, the
+		 * denominationDivision() method also judges the results in the event that there
+		 * are 0 of a given denomination.
+		 * 
+		 * In the above example, there were no twenty dollar bills, so the program would
+		 * not output "0 twenty dollar bills."
+		 * 
+		 * Likewise, it also judges if there is only 1 of a given denomination and
+		 * outputs the appropriate response (e.g. 1 ten dollar bill as opposed to 1
+		 * twenty dollar bills).
+		 */
 		System.out.println("Or, if you prefer, your change is:");
 
 		if (denominationDivision(startingChange, 2000) != 0) {
@@ -132,6 +170,11 @@ public class MakeChangeApp {
 
 	}
 
+	/*
+	 * In addition to , this method must also judge against repeating decimals (e.g.
+	 * 0.3333333334 or 0.6666666667) that generate incorrect results when the
+	 * decimals are dropped in the data casting.
+	 */
 	private static int roundRepeatingDecimals(double payment, double price) {
 		double combinedTotal = ((payment - price) * 100);
 		int roundedDecimals = 0;
@@ -146,6 +189,10 @@ public class MakeChangeApp {
 		return roundedDecimals;
 	}
 
+	/*
+	 * This method determines the numerical format of the change and judges
+	 * accordingly for cents, i.e. printing ".0" before single digit cents.
+	 */
 	private static void numericalChange(int startingChange) {
 		System.out.println();
 		System.out.print("Thank you! Your change today is $" + (startingChange / 100));
@@ -159,6 +206,10 @@ public class MakeChangeApp {
 
 	}
 
+	/*
+	 * This method determines precisely how many of a given denomination of currency
+	 * to return to giveChange().
+	 */
 	private static int denominationDivision(int startingChange, int increment) {
 		int denomination = startingChange / increment;
 		if (denomination >= 1) {
@@ -169,10 +220,12 @@ public class MakeChangeApp {
 		}
 	}
 
+	// This method generates the response for insufficient payment.
 	private static void insufficientPayment() {
 		System.out.print("Your payment falls short. Please insert the correct change. ");
 	}
 
+	// This method generates the response for exact payment.
 	private static void thankYou() {
 		System.out.println("Thank you for using exact change.");
 	}
